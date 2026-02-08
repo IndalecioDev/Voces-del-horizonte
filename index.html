@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voces del horizonte</title>
+  <link rel="stylesheet" href="voces_del_horizonte.css"/>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Voces del horizonte</h1>
+    </header>
+
+    <!-- =========================
+         AMBIENTES (YOUTUBE)
+         ========================= -->
+    <section id="ambientes" aria-label="Ambientes de rol">
+      <h2>Ambientes</h2>
+      <p class="section-sub">Elige un tipo y después una opción para empezar</p>
+
+      <div class="options" id="categoryGrid"></div>
+
+      <div class="subpanel" id="scenePanel" hidden>
+        <h3 id="sceneTitle">Opciones</h3>
+        <div class="options" id="sceneGrid"></div>
+      </div>
+
+      <div class="subpanel" id="playerPanel" hidden>
+        <div class="nowbox">
+          <div class="now-title" id="ytNowTitle">Nada reproduciéndose</div>
+          <div class="now-meta" id="ytNowMeta">Selecciona un ambiente</div>
+        </div>
+
+        <div class="controls">
+          <button id="ytStart" type="button">Empezar</button>
+          <button id="ytPause" class="secondary" type="button">Pausar</button>
+          <button id="ytReset" class="secondary" type="button">Reiniciar</button>
+        </div>
+
+        <div class="yt-frame" id="ytFrameWrap" hidden>
+          <iframe
+            id="ytFrame"
+            title="YouTube player"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-separator" aria-hidden="true"><span>◆</span></div>
+
+    <!-- =========================
+         RADIO (LOCAL)
+         ========================= -->
+    <section id="radio" aria-label="Radio del horizonte">
+      <h2>La radio del horizonte</h2>
+      <p class="section-sub">Escucha las mejores canciones de Terratea</p>
+
+      <div class="radio-shell">
+        <div class="nowbox nowbox-animate" id="radioNowBox">
+          <div class="now-title" id="radioNowTitle">La radio está lista</div>
+          <div class="now-meta" id="radioNowMeta">Pulsa Play</div>
+        </div>
+
+        <audio id="radioAudio" preload="metadata"></audio>
+
+        <div class="radio-progress">
+          <div class="radio-bar" id="radioBar" role="slider" aria-label="Progreso de la canción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="radio-bar-fill" id="radioBarFill"></div>
+            <div class="radio-bar-knob" id="radioBarKnob"></div>
+          </div>
+          <div class="radio-times">
+            <span id="radioTimeNow">00:00</span>
+            <span id="radioTimeTotal">--:--</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="radioPrev" class="secondary" type="button">Atrás</button>
+          <button id="radioPlay" type="button">Play</button>
+          <button id="radioPause" class="secondary" type="button">Pausa</button>
+          <button id="radioNext" type="button">Siguiente</button>
+          <button id="radioVolDown" class="secondary" type="button" title="Bajar volumen">🔉 -</button>
+          <button id="radioVolUp" class="secondary" type="button" title="Subir volumen">🔊 +</button>
+        </div>
+
+        <div class="radio-row">
+          <button id="radioShuffle" class="secondary active" type="button" aria-pressed="true">🔀 Aleatorio: ON</button>
+          <div class="radio-vol" aria-live="polite">Volumen: <span id="radioVolValue">80%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <small>Voces del horizonte</small>
+    </footer>
+  </main>
+
+  <script src="voces_del_horizonte.js"></script>
+</body>
+</html>
