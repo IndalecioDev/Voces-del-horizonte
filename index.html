@@ -1,101 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voces del horizonte</title>
+  <title>Voces del Horizonte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+
+  <canvas id="grain"></canvas>
+
   <main class="app">
-    <header>
-      <h1>Voces del horizonte</h1>
+
+    <header class="site-header">
+      <div class="header-rule"></div>
+      <div class="header-body">
+        <span class="header-label">Mesa sonora</span>
+        <h1><em>Voces</em> del Horizonte</h1>
+        <p class="header-sub">Terratea &nbsp;&middot;&nbsp; Ambientes de rol</p>
+      </div>
+      <div class="header-rule"></div>
     </header>
 
-    <!-- =========================
-         AMBIENTES (YOUTUBE)
-         ========================= -->
-    <section id="ambientes" aria-label="Ambientes de rol">
-      <h2>Ambientes</h2>
-      <p class="section-sub">Elige un tipo y después una opción para empezar</p>
-
-      <div class="options" id="categoryGrid"></div>
-
-      <div class="subpanel" id="scenePanel" hidden>
-        <h3 id="sceneTitle">Opciones</h3>
-        <div class="options" id="sceneGrid"></div>
+    <section class="section reveal" id="ambientes">
+      <div class="section-meta">
+        <span class="section-num">01</span>
+        <div>
+          <h2 class="section-title">Ambientes</h2>
+          <p class="section-desc">Selecciona una categoría para explorar las escenas disponibles</p>
+        </div>
       </div>
 
-      <div class="subpanel" id="playerPanel" hidden>
-        <div class="nowbox">
-          <div class="now-title" id="ytNowTitle">Nada reproduciéndose</div>
-          <div class="now-meta" id="ytNowMeta">Selecciona un ambiente</div>
-        </div>
+      <div class="cat-grid" id="categoryGrid"></div>
 
-        <div class="controls">
-          <button id="ytStart" type="button">Empezar</button>
-          <button id="ytPause" class="secondary" type="button">Pausar</button>
-          <button id="ytReset" class="secondary" type="button">Reiniciar</button>
+      <div class="scene-panel" id="scenePanel" hidden>
+        <div class="scene-panel-head">
+          <h3 id="sceneTitle">Escenas</h3>
+          <div class="search-wrap">
+            <input id="sceneSearch" type="search" placeholder="Filtrar escenas" autocomplete="off" spellcheck="false"/>
+            <div class="search-line"></div>
+          </div>
         </div>
+        <div class="scene-grid" id="sceneGrid"></div>
+        <p class="empty-msg" id="sceneEmpty" hidden>Sin resultados</p>
+      </div>
 
-        <div class="yt-frame" id="ytFrameWrap" hidden>
-          <iframe
-            id="ytFrame"
-            title="YouTube player"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          ></iframe>
+      <div class="player-block" id="playerPanel" hidden>
+        <div class="player-info">
+          <div class="playing-dot" id="ytDot"></div>
+          <div class="player-text">
+            <p class="playing-label">Reproduciendo</p>
+            <p class="playing-title" id="ytNowTitle">—</p>
+            <p class="playing-sub" id="ytNowMeta">Selecciona una escena</p>
+          </div>
+        </div>
+        <div class="player-actions">
+          <button class="btn-primary" id="ytStart">Reproducir</button>
+          <button class="btn-ghost" id="ytPause">Pausar</button>
+          <button class="btn-ghost" id="ytReset">Reiniciar</button>
+        </div>
+        <div class="yt-wrap" id="ytFrameWrap" hidden>
+          <iframe id="ytFrame" title="YouTube player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <div class="section-separator" aria-hidden="true"><span>◆</span></div>
+    <div class="divider reveal"><span></span></div>
 
-    <!-- =========================
-         RADIO (LOCAL)
-         ========================= -->
-    <section id="radio" aria-label="Radio del horizonte">
-      <h2>La radio del horizonte</h2>
-      <p class="section-sub">Escucha las mejores canciones de Terratea</p>
+    <section class="section reveal" id="radio">
+      <div class="section-meta">
+        <span class="section-num">02</span>
+        <div>
+          <h2 class="section-title">Radio del Horizonte</h2>
+          <p class="section-desc">Canciones originales de Terratea</p>
+        </div>
+      </div>
 
-      <div class="radio-shell">
-        <div class="nowbox nowbox-animate" id="radioNowBox">
-          <div class="now-title" id="radioNowTitle">La radio está lista</div>
-          <div class="now-meta" id="radioNowMeta">Pulsa Play</div>
+      <div class="radio-body">
+
+        <div class="radio-now">
+          <div class="now-visual">
+            <canvas id="vizCanvas" width="56" height="56"></canvas>
+          </div>
+          <div class="now-text nowbox-animate" id="radioNowBox">
+            <p class="now-label">En antena</p>
+            <p class="now-title" id="radioNowTitle">La radio está lista</p>
+            <p class="now-sub" id="radioNowMeta">Pulsa reproducir</p>
+          </div>
         </div>
 
         <audio id="radioAudio" preload="metadata"></audio>
 
-        <div class="radio-progress">
-          <div class="radio-bar" id="radioBar" role="slider" aria-label="Progreso de la canción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
-            <div class="radio-bar-fill" id="radioBarFill"></div>
-            <div class="radio-bar-knob" id="radioBarKnob"></div>
+        <div class="progress-wrap">
+          <div class="progress-bar" id="radioBar" role="slider" aria-label="Progreso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="progress-fill" id="radioBarFill"></div>
+            <div class="progress-knob" id="radioBarKnob"></div>
           </div>
-          <div class="radio-times">
+          <div class="progress-times">
             <span id="radioTimeNow">00:00</span>
             <span id="radioTimeTotal">--:--</span>
           </div>
         </div>
 
-        <div class="controls">
-          <button id="radioPrev" class="secondary" type="button">Atrás</button>
-          <button id="radioPlay" type="button">Play</button>
-          <button id="radioPause" class="secondary" type="button">Pausa</button>
-          <button id="radioNext" type="button">Siguiente</button>
-          <button id="radioVolDown" class="secondary" type="button" title="Bajar volumen">🔉 -</button>
-          <button id="radioVolUp" class="secondary" type="button" title="Subir volumen">🔊 +</button>
+        <div class="radio-controls">
+          <button class="ctrl-btn" id="radioPrev" title="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="19,20 9,12 19,4" fill="currentColor" stroke="none"/><line x1="5" y1="4" x2="5" y2="20"/></svg>
+          </button>
+          <button class="ctrl-btn ctrl-play" id="radioPlay" title="Reproducir">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+          </button>
+          <button class="ctrl-btn" id="radioPause" title="Pausa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <button class="ctrl-btn" id="radioNext" title="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="5,4 15,12 5,20" fill="currentColor" stroke="none"/><line x1="19" y1="4" x2="19" y2="20"/></svg>
+          </button>
         </div>
 
-        <div class="radio-row">
-          <button id="radioShuffle" class="secondary active" type="button" aria-pressed="true">🔀 Aleatorio: ON</button>
-          <div class="radio-vol" aria-live="polite">Volumen: <span id="radioVolValue">80%</span></div>
+        <div class="radio-meta">
+          <button class="toggle-btn" id="radioShuffle" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M16 3h5v5M4 20l16-16M16 21h5v-5M4 4l16 16"/></svg>
+            <span>Aleatorio</span>
+          </button>
+          <div class="vol-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="currentColor" stroke="none"/><path d="M15.54,8.46a5,5,0,0,1,0,7.07M19.07,4.93a10,10,0,0,1,0,14.14"/></svg>
+            <div class="vol-track-wrap">
+              <div class="vol-track"><div class="vol-fill" id="radioVolFill"></div></div>
+              <input type="range" class="vol-range" id="radioVolSlider" min="0" max="100" value="80" aria-label="Volumen"/>
+            </div>
+            <span class="vol-value" id="radioVolValue">80</span>
+          </div>
         </div>
+
+        <div class="tracklist-section">
+          <button class="tracklist-toggle" id="tracklistToggle" type="button">
+            <span>Lista de canciones</span>
+            <svg class="tl-arrow" id="tracklistArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tracklist" id="tracklist" hidden></div>
+        </div>
+
       </div>
     </section>
 
-    <footer>
-      <small>Voces del horizonte - IndalecioDev</small>
+    <footer class="site-footer reveal">
+      <div class="footer-rule"></div>
+      <p>Voces del Horizonte &nbsp;&middot;&nbsp; Terratea</p>
     </footer>
+
   </main>
 
   <script src="script.js"></script>
