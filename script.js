@@ -1,472 +1,553 @@
-// ===============================
-// VOCES DEL HORIZONTE
-// Ambientes (YouTube) + Radio (Local)
-// ===============================
+// ============================================
+// VOCES DEL HORIZONTE — v3
+// ============================================
 
-// -------------------------------
-// AMBIENTES (YOUTUBE)
-// -------------------------------
+// ── DATOS ──
 const AMBIENTES = [
   {
     name: "Terror",
-    desc: "Ambientes inquietantes, oscuros y perturbadores",
+    desc: "Ambientes oscuros e inquietantes",
     scenes: [
-      { name: "Susurros en la oscuridad", desc: "", videoId: "vj8hryqOXNE" },
-      { name: "Presencia desconocida", desc: "", videoId: "CDWtH8eHeEU" },
-      { name: "Ritual prohibido", desc: "", videoId: "dcwB95o3UdA" }
+      { name: "Susurros en la oscuridad", videoId: "vj8hryqOXNE" },
+      { name: "Presencia desconocida",    videoId: "CDWtH8eHeEU" },
+      { name: "Ritual prohibido",         videoId: "dcwB95o3UdA" }
     ]
   },
   {
     name: "Ambiente de rol",
-    desc: "Música ambiental para sesiones de rol y narración",
+    desc: "Música para sesiones y narración",
     scenes: [
-      { name: "Bosque", desc: "", videoId: "F8bYaMoQ2sM" },
-      { name: "Lluvia", desc: "", videoId: "hzJTZgGtAVU" },
-      { name: "Tormenta", desc: "", videoId: "w7_7pz5-Jk0" },
-      { name: "Ciudad viva", desc: "", videoId: "q9yaKpYS9qc" },
-      { name: "Cavernas", desc: "", videoId: "OtfgXgclSxU" },
-      { name: "Taberna viva", desc: "", videoId: "WOtNqISrpyY" },
-      { name: "Ciudad desertica", desc: "", videoId: "82Qm3a3ngug" },
-      { name: "Bosque de noche", desc: "", videoId: "NvBS6NWewxU" },
-      { name: "Navegando en el mar", desc: "", videoId: "uPAfgWAb6Qo" },
-      { name: "Pantano", desc: "", videoId: "YT2D1-bDMq8" },
-      { name: "Tormenta de nieve", desc: "", videoId: "eZgPLvQn1Fo" },
-      { name: "Playa", desc: "", videoId: "4djOiCdkLsg" },
-      { name: "Campamento noche", desc: "", videoId: "ww8E0MR6AjQ" },
-      { name: "Alcantarillado", desc: "", videoId: "Q1Vh3MiwSUc" },
-      { name: "Mercado", desc: "", videoId: "-r9cvBWjGKM" },
-      { name: "Volcan", desc: "", videoId: "tor8d3IgZ1w" }
+      { name: "Bosque",             videoId: "F8bYaMoQ2sM" },
+      { name: "Lluvia",             videoId: "hzJTZgGtAVU" },
+      { name: "Tormenta",           videoId: "w7_7pz5-Jk0" },
+      { name: "Ciudad viva",        videoId: "q9yaKpYS9qc" },
+      { name: "Cavernas",           videoId: "OtfgXgclSxU" },
+      { name: "Taberna viva",       videoId: "WOtNqISrpyY" },
+      { name: "Ciudad desértica",   videoId: "82Qm3a3ngug" },
+      { name: "Bosque de noche",    videoId: "NvBS6NWewxU" },
+      { name: "Navegando en el mar",videoId: "uPAfgWAb6Qo" },
+      { name: "Pantano",            videoId: "YT2D1-bDMq8" },
+      { name: "Tormenta de nieve",  videoId: "eZgPLvQn1Fo" },
+      { name: "Playa",              videoId: "4djOiCdkLsg" },
+      { name: "Campamento noche",   videoId: "ww8E0MR6AjQ" },
+      { name: "Alcantarillado",     videoId: "Q1Vh3MiwSUc" },
+      { name: "Mercado",            videoId: "-r9cvBWjGKM" },
+      { name: "Volcán",             videoId: "tor8d3IgZ1w" }
     ]
   },
-
-  // =========================
-  // NUEVOS AMBIENTES AÑADIDOS
-  // =========================
-
   {
     name: "Batalla",
-    desc: "Elige la banda sonora para tu epica batalla",
+    desc: "Banda sonora épica para el combate",
     scenes: [
-      { name: "Emboscada", desc: "", videoId: "8Q7cioftmKs" },
-      { name: "Heroes", desc: "", videoId: "H8n7K3jABhI" },
-      { name: "Boss de mazmorra", desc: "", videoId: "tBI63CPbW9c" },
-      { name: "Sorpresa", desc: "", videoId: "sd1Otp7s1Fk" },
-      { name: "Persecucion", desc: "", videoId: "fq8OSrIUST4" },
-      { name: "Duelo", desc: "", videoId: "_YpKEpF0oxo" },
-      { name: "Aberracion", desc: "", videoId: "WahaiTaVw2k" },
-      { name: "Combate facil", desc: "", videoId: "2GX9lVHfnxs" },
-      { name: "ataque pirata", desc: "", videoId: "c4-S9N1ecOo" },
-      { name: "Combate acuatico", desc: "", videoId: "YWLllXzFFA8" },
-      { name: "arena de combate", desc: "", videoId: "3YO67uD8TAo" },
-      { name: "Violin de fuego", desc: "", videoId: "71-xEw3Z_kU" },
-      { name: "Corazon hueco", desc: "", videoId: "9gUZayPkXbw" }
+      { name: "Emboscada",       videoId: "8Q7cioftmKs" },
+      { name: "Héroes",          videoId: "H8n7K3jABhI" },
+      { name: "Boss de mazmorra",videoId: "tBI63CPbW9c" },
+      { name: "Sorpresa",        videoId: "sd1Otp7s1Fk" },
+      { name: "Persecución",     videoId: "fq8OSrIUST4" },
+      { name: "Duelo",           videoId: "_YpKEpF0oxo" },
+      { name: "Aberración",      videoId: "WahaiTaVw2k" },
+      { name: "Combate fácil",   videoId: "2GX9lVHfnxs" },
+      { name: "Ataque pirata",   videoId: "c4-S9N1ecOo" },
+      { name: "Combate acuático",videoId: "YWLllXzFFA8" },
+      { name: "Arena de combate",videoId: "3YO67uD8TAo" },
+      { name: "Violín de fuego", videoId: "71-xEw3Z_kU" },
+      { name: "Corazón hueco",   videoId: "9gUZayPkXbw" }
     ]
   },
-
   {
     name: "Eventos",
-    desc: "Banda sonora para tus eventos",
+    desc: "Momentos especiales de la sesión",
     scenes: [
-      { name: "La aventura empieza", desc: "", videoId: "Jikm8CCRbdM" },
-      { name: "suspense", desc: "", videoId: "EApZmmYg_oQ" },
-      { name: "Negociacion tensa", desc: "", videoId: "RPkHu8M_U4c" },
-      { name: "Ultimo adios", desc: "", videoId: "mFsQpCjRyvY" },
-      { name: "Investigacion", desc: "", videoId: "7wBzL62Va1k" },
-      { name: "Descanso", desc: "", videoId: "7T3SU4Ht1Yw" },
-      { name: "Elegancia", desc: "", videoId: "ulplqXTp4R0" },
-      { name: "Sigilo", desc: "", videoId: "WW4bdFhcZgw" },
-      { name: "OFFROL", desc: "", videoId: "dxwJuo_KejY" },
-      { name: "Momento tragico", desc: "", videoId: "HNd7P7C-lWg" },
-      { name: "gremio", desc: "", videoId: "33iGWNJg73U" },
-      { name: "ritual", desc: "", videoId: "5Y7oXb_Vmsc" }
+      { name: "La aventura empieza", videoId: "Jikm8CCRbdM" },
+      { name: "Suspense",            videoId: "EApZmmYg_oQ" },
+      { name: "Negociación tensa",   videoId: "RPkHu8M_U4c" },
+      { name: "Último adiós",        videoId: "mFsQpCjRyvY" },
+      { name: "Investigación",       videoId: "7wBzL62Va1k" },
+      { name: "Descanso",            videoId: "7T3SU4Ht1Yw" },
+      { name: "Elegancia",           videoId: "ulplqXTp4R0" },
+      { name: "Sigilo",              videoId: "WW4bdFhcZgw" },
+      { name: "OFFROL",              videoId: "dxwJuo_KejY" },
+      { name: "Momento trágico",     videoId: "HNd7P7C-lWg" },
+      { name: "Gremio",              videoId: "33iGWNJg73U" },
+      { name: "Ritual",              videoId: "5Y7oXb_Vmsc" }
     ]
   },
-
   {
     name: "Taberna",
-    desc: "El sitio favorito del famoso Barno ",
+    desc: "El rincón favorito de Barno",
     scenes: [
-      { name: "Bardo", desc: "", videoId: "u2jLHdpo2AQ" },
-      { name: "concierto", desc: "", videoId: "JvAAj5vFMwY" },
-      { name: "descanso", desc: "", videoId: "aspw9d8Qw2s" },
-      { name: "piratillas", desc: "", videoId: "x3M-5jMFPMY" },
-      { name: "Tetrico", desc: "", videoId: "iQiUgrHqB9w" },
-      { name: "desierto", desc: "", videoId: "dhA8BtU8MaI" },
-      { name: "magico", desc: "", videoId: "hC6xVASVoO0" },
-      { name: "danza", desc: "", videoId: "JyyQlYRqvRs" },
-      { name: "Solitaria", desc: "", videoId: "orgikrTCKTc" }
+      { name: "Bardo",     videoId: "u2jLHdpo2AQ" },
+      { name: "Concierto", videoId: "JvAAj5vFMwY" },
+      { name: "Descanso",  videoId: "aspw9d8Qw2s" },
+      { name: "Piratillas",videoId: "x3M-5jMFPMY" },
+      { name: "Tétrico",   videoId: "iQiUgrHqB9w" },
+      { name: "Desierto",  videoId: "dhA8BtU8MaI" },
+      { name: "Mágico",    videoId: "hC6xVASVoO0" },
+      { name: "Danza",     videoId: "JyyQlYRqvRs" },
+      { name: "Solitaria", videoId: "orgikrTCKTc" }
     ]
   },
-
   {
     name: "Escenarios",
-    desc: "",
+    desc: "Paisajes sonoros para la exploración",
     scenes: [
-      { name: "Pantano", desc: "", videoId: "fv_7EurNAss" },
-      { name: "montañas", desc: "", videoId: "bLZApMsorjA" },
-      { name: "Bosque", desc: "", videoId: "4Y6n-1XQSfE" },
-      { name: "desierto", desc: "", videoId: "maYRisfQQvc" },
-      { name: "Hielo", desc: "", videoId: "qD2ahwiPRBk" },
-      { name: "aguas profundas", desc: "", videoId: "MhiSjz0c7MI" }
+      { name: "Pantano",         videoId: "fv_7EurNAss" },
+      { name: "Montañas",        videoId: "bLZApMsorjA" },
+      { name: "Bosque",          videoId: "4Y6n-1XQSfE" },
+      { name: "Desierto",        videoId: "maYRisfQQvc" },
+      { name: "Hielo",           videoId: "qD2ahwiPRBk" },
+      { name: "Aguas profundas", videoId: "MhiSjz0c7MI" }
     ]
   }
 ];
 
-
-const categoryGrid = document.getElementById("categoryGrid");
-const scenePanel = document.getElementById("scenePanel");
-const sceneTitle = document.getElementById("sceneTitle");
-const sceneGrid = document.getElementById("sceneGrid");
-const playerPanel = document.getElementById("playerPanel");
-
-const ytNowTitle = document.getElementById("ytNowTitle");
-const ytNowMeta = document.getElementById("ytNowMeta");
-
-const ytStart = document.getElementById("ytStart");
-const ytPause = document.getElementById("ytPause");
-const ytReset = document.getElementById("ytReset");
-
-const ytFrameWrap = document.getElementById("ytFrameWrap");
-const ytFrame = document.getElementById("ytFrame");
-
-let selectedScene = null;
-let isPlaying = false;
-
-function makeCard(title, desc) {
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
-  return div;
-}
-
-function renderCategories() {
-  categoryGrid.innerHTML = "";
-  AMBIENTES.forEach((cat, idx) => {
-    const card = makeCard(cat.name, cat.desc);
-    card.addEventListener("click", () => openCategory(idx));
-    categoryGrid.appendChild(card);
-  });
-
-  // Estado inicial: solo categorías
-  scenePanel.hidden = true;
-  playerPanel.hidden = true;
-  stopYouTube();
-}
-
-function openCategory(idx) {
-  const cat = AMBIENTES[idx];
-
-  sceneTitle.textContent = `Opciones • ${cat.name}`;
-  sceneGrid.innerHTML = "";
-
-  cat.scenes.forEach((s) => {
-    const card = makeCard(s.name, s.desc);
-    card.addEventListener("click", () => selectScene(s));
-    sceneGrid.appendChild(card);
-  });
-
-  scenePanel.hidden = false;
-  playerPanel.hidden = false;
-
-  scenePanel.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function selectScene(scene) {
-  selectedScene = scene;
-  ytNowTitle.textContent = scene.name;
-  ytNowMeta.textContent = scene.desc;
-
-  // No reproducir aquí. Solo seleccionar.
-  // Si había un vídeo sonando, lo paramos para evitar mezcla rara.
-  stopYouTube();
-}
-
-function startYouTube() {
-  if (!selectedScene) return;
-
-  const id = selectedScene.videoId;
-
-  // Embed normal + enablejsapi=1 para poder pausar con postMessage
-  ytFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
-  ytFrameWrap.hidden = false;
-  isPlaying = true;
-}
-
-function pauseYouTube() {
-  // Pausa REAL sin cerrar el iframe (postMessage a YouTube)
-  if (!ytFrame || !ytFrame.contentWindow) return;
-
-  ytFrame.contentWindow.postMessage(
-    JSON.stringify({ event: "command", func: "pauseVideo", args: [] }),
-    "*"
-  );
-
-  isPlaying = false;
-  ytNowMeta.textContent = "Pausado";
-}
-
-function stopYouTube() {
-  ytFrameWrap.hidden = true;
-  ytFrame.src = "";
-  isPlaying = false;
-}
-
-ytStart.addEventListener("click", () => {
-  if (!selectedScene) {
-    ytNowTitle.textContent = "Elige un subtipo";
-    ytNowMeta.textContent = "Selecciona una opción primero";
-    return;
-  }
-  startYouTube();
-});
-
-ytPause.addEventListener("click", () => {
-  pauseYouTube();
-});
-
-ytReset.addEventListener("click", () => {
-  // 1) Para y limpia el vídeo
-  stopYouTube();
-
-  // 2) Vuelve al inicio: SOLO categorías visibles
-  selectedScene = null;
-  ytNowTitle.textContent = "Nada reproduciéndose";
-  ytNowMeta.textContent = "Selecciona un ambiente";
-
-  scenePanel.hidden = true;
-  playerPanel.hidden = true;
-
-  document.getElementById("ambientes")?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-renderCategories();
-// -------------------------------
-// RADIO DEL HORIZONTE (LOCAL)
-// -------------------------------
 const TRACKS = [
-  { title: "LT Amonseith", src: "LT Amonseith.mp3" },
-  { title: "LT Barno 1", src: "LT Barno 1.mp3" },
-  { title: "LT Barno 2", src: "LT Barno 2.mp3" },
-  { title: "LT BESTA", src: "LT BESTA.mp3" },
-  { title: "LT Caramelo", src: "LT Caramelo.mp3" },
-  { title: "LT Draktarirus", src: "LT Draktarirus.mp3" },
-  { title: "LT POLLO.", src: "LT POLLO..mp3" },
-  { title: "LT Rafgal", src: "LT Rafgal.mp3" },
-  { title: "LT ILLINOA.", src: "LT ILLINOA..mp3" },
-  { title: "LT MARA", src: "LT MARA.mp3" },
-  { title: "LT Mel", src: "LT Mel.mp3" },
-  { title: "LT varyan", src: "LT varyan.mp3" },
-  { title: "LT VIGGO", src: "LT VIGGO.mp3" },
-  { title: "LT Weedy", src: "LT Weedy.mp3" },
-  { title: "LT Singlas", src: "LT Singlas.mp3" },
-  { title: "LT una canción de Barno", src: "LT una canción de Barno.mp3" },
-  { title: "LT Vaal", src: "LT Vaal.mp3" },
-  { title: "LT Vaal'cifer", src: "LT Vaal'cifer.mp3" }
+  { title: "LT Ainsley",                  src: "Musica IA/LT Ainsley.mp3" },
+  { title: "LT Aki",                      src: "Musica IA/LT Aki.mp3" },
+  { title: "LT ALASTOR",                  src: "Musica IA/LT ALASTOR.mp3" },
+  { title: "LT Aleria",                   src: "Musica IA/LT Aleria.mp3" },
+  { title: "LT AMARA",                    src: "Musica IA/LT AMARA.mp3" },
+  { title: "LT Ambrosius",                src: "Musica IA/LT Ambrosius.mp3" },
+  { title: "LT ARYA",                     src: "Musica IA/LT ARYA.mp3" },
+  { title: "LT ASTRID",                   src: "Musica IA/LT ASTRID.mp3" },
+  { title: "LT Aysel",                    src: "Musica IA/LT Aysel.mp3" },
+  { title: "LT Azoth",                    src: "Musica IA/LT Azoth.mp3" },
+  { title: "LT BARNO",                    src: "Musica IA/LT BARNO.mp3" },
+  { title: "LT Brego",                    src: "Musica IA/LT Brego.mp3" },
+  { title: "LT Bruma",                    src: "Musica IA/LT Bruma.mp3" },
+  { title: "LT Castor",                   src: "Musica IA/LT Castor.mp3" },
+  { title: "LT Cinderstone",              src: "Musica IA/LT Cinderstone.mp3" },
+  { title: "LT Dalgren",                  src: "Musica IA/LT Dalgren.mp3" },
+  { title: "LT DAXON",                    src: "Musica IA/LT DAXON.mp3" },
+  { title: "LT FROSTMANE",                src: "Musica IA/LT FROSTMANE.mp3" },
+  { title: "LT Gloamtide",                src: "Musica IA/LT Gloamtide.mp3" },
+  { title: "LT GOLEM",                    src: "Musica IA/LT GOLEM.mp3" },
+  { title: "LT Gorvar",                   src: "Musica IA/LT Gorvar.mp3" },
+  { title: "LT GRIMD",                    src: "Musica IA/LT GRIMD.mp3" },
+  { title: "LT Heronveil",                src: "Musica IA/LT Heronveil.mp3" },
+  { title: "LT Isaach",                   src: "Musica IA/LT Isaach.mp3" },
+  { title: "LT Julk Ogan",                src: "Musica IA/LT Julk Ogan.mp3" },
+  { title: "LT Kuno",                     src: "Musica IA/LT Kuno.mp3" },
+  { title: "LT KUROKI",                   src: "Musica IA/LT KUROKI.mp3" },
+  { title: "LT LANCE",                    src: "Musica IA/LT LANCE.mp3" },
+  { title: "LT Lero",                     src: "Musica IA/LT Lero.mp3" },
+  { title: "LT MARA",                     src: "Musica IA/LT MARA.mp3" },
+  { title: "LT Mel",                      src: "Musica IA/LT Mel.mp3" },
+  { title: "LT Ominorej",                 src: "Musica IA/LT Ominorej.mp3" },
+  { title: "LT Varis",                    src: "Musica IA/LT Varis.mp3" },
+  { title: "LT varyan",                   src: "Musica IA/LT varyan.mp3" },
+  { title: "LT VIGGO",                    src: "Musica IA/LT VIGGO.mp3" },
+  { title: "LT Vigo",                     src: "Musica IA/LT Vigo.mp3" },
+  { title: "LT Weedy",                    src: "Musica IA/LT Weedy.mp3" },
+  { title: "LT XAVGRETOR",                src: "Musica IA/LT XAVGRETOR.mp3" },
+  { title: "LT Yuuji",                    src: "Musica IA/LT Yuuji.mp3" },
+  { title: "Terratea, Tierra de Leyendas",src: "Musica IA/Terratea, Tierra de Leyendas.mp3" },
+  { title: "LT Señor de la Noche",        src: "Musica IA/LT Señor de la Noche.mp3" },
+  { title: "LT SHINJIRO",                 src: "Musica IA/LT SHINJIRO.mp3" },
+  { title: "LT Singlas",                  src: "Musica IA/LT Singlas.mp3" },
+  { title: "LT SKULL",                    src: "Musica IA/LT SKULL.mp3" },
+  { title: "LT Stardust",                 src: "Musica IA/LT Stardust.mp3" },
+  { title: "LT Tibu",                     src: "Musica IA/LT Tibu.mp3" },
+  { title: "LT una canción de Barno",     src: "Musica IA/LT una canción de Barno.mp3" },
+  { title: "LT Urist",                    src: "Musica IA/LT Urist.mp3" },
+  { title: "LT Vaal",                     src: "Musica IA/LT Vaal.mp3" },
+  { title: "LT Vaal'cifer",               src: "Musica IA/LT Vaal'cifer.mp3" }
 ];
 
-const radioAudio = document.getElementById("radioAudio");
-const radioNowBox = document.getElementById("radioNowBox");
-const radioNowTitle = document.getElementById("radioNowTitle");
-const radioNowMeta = document.getElementById("radioNowMeta");
-
-const radioPrev = document.getElementById("radioPrev");
-const radioPlay = document.getElementById("radioPlay");
-const radioPause = document.getElementById("radioPause");
-const radioNext = document.getElementById("radioNext");
-
-const radioVolDown = document.getElementById("radioVolDown");
-const radioVolUp = document.getElementById("radioVolUp");
-const radioVolValue = document.getElementById("radioVolValue");
-
-const radioShuffle = document.getElementById("radioShuffle");
-
-const radioBar = document.getElementById("radioBar");
-const radioBarFill = document.getElementById("radioBarFill");
-const radioBarKnob = document.getElementById("radioBarKnob");
-const radioTimeNow = document.getElementById("radioTimeNow");
-const radioTimeTotal = document.getElementById("radioTimeTotal");
-
-let trackIndex = -1;
-let historyStack = [];
-let shuffleEnabled = true;
-let switchingTimer = null;
-
-function fmtTime(seconds){
-  if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-}
-
-function animateSwitch(){
-  if (!radioNowBox) return;
-  radioNowBox.classList.add("is-switching");
-  clearTimeout(switchingTimer);
-  switchingTimer = setTimeout(() => {
-    radioNowBox.classList.remove("is-switching");
-  }, 230);
-}
-
-function pickRandomNext(currentIdx){
-  if (TRACKS.length <= 1) return 0;
-  let next = currentIdx;
-  while (next === currentIdx) {
-    next = Math.floor(Math.random() * TRACKS.length);
+// ── GRAIN ──
+(function() {
+  const c = document.getElementById('grain');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  let t = 0;
+  function draw() {
+    c.width  = window.innerWidth;
+    c.height = window.innerHeight;
+    const img = ctx.createImageData(c.width, c.height);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = (Math.random() * 255) | 0;
+      d[i] = d[i+1] = d[i+2] = v;
+      d[i+3] = 18;
+    }
+    ctx.putImageData(img, 0, 0);
+    setTimeout(() => requestAnimationFrame(draw), 80);
   }
-  return next;
-}
+  draw();
+})();
 
-function setNowPlayingUI(title, meta){
-  animateSwitch();
-  setTimeout(() => {
-    radioNowTitle.textContent = title;
-    radioNowMeta.textContent = meta;
-  }, 120);
-}
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-function setVol(v){
-  const clamped = Math.max(0, Math.min(1, v));
-  radioAudio.volume = clamped;
-  if (radioVolValue) radioVolValue.textContent = Math.round(clamped * 100) + "%";
-}
+// ── AMBIENTES ──
+const catGrid    = document.getElementById('categoryGrid');
+const scenePanel = document.getElementById('scenePanel');
+const sceneTitle = document.getElementById('sceneTitle');
+const sceneGrid  = document.getElementById('sceneGrid');
+const sceneSearch= document.getElementById('sceneSearch');
+const sceneEmpty = document.getElementById('sceneEmpty');
+const playerPanel= document.getElementById('playerPanel');
+const ytDot      = document.getElementById('ytDot');
+const ytNowTitle = document.getElementById('ytNowTitle');
+const ytNowMeta  = document.getElementById('ytNowMeta');
+const ytStart    = document.getElementById('ytStart');
+const ytPause    = document.getElementById('ytPause');
+const ytReset    = document.getElementById('ytReset');
+const ytFrameWrap= document.getElementById('ytFrameWrap');
+const ytFrame    = document.getElementById('ytFrame');
 
-function loadTrack(i, autoplay=false, pushHistory=true){
-  if (!TRACKS.length) return;
+let selectedScene   = null;
+let currentCat      = null;
 
-  const nextIndex = (i + TRACKS.length) % TRACKS.length;
-  if (pushHistory && trackIndex !== -1 && nextIndex !== trackIndex) {
-    historyStack.push(trackIndex);
-    if (historyStack.length > 50) historyStack.shift();
-  }
-
-  trackIndex = nextIndex;
-  const t = TRACKS[trackIndex];
-
-  radioAudio.src = t.src;
-  radioAudio.currentTime = 0;
-
-  radioBarFill.style.width = "0%";
-  radioBarKnob.style.left = "0%";
-  radioTimeNow.textContent = "00:00";
-  radioTimeTotal.textContent = "--:--";
-
-  setNowPlayingUI(t.title, "Cargando duración…");
-
-  if (autoplay) radioAudio.play().catch(()=>{});
-}
-
-function updateProgress(){
-  const dur = radioAudio.duration;
-  const cur = radioAudio.currentTime;
-
-  radioTimeNow.textContent = fmtTime(cur);
-  radioTimeTotal.textContent = fmtTime(dur);
-
-  if (Number.isFinite(dur) && dur > 0) {
-    const pct = Math.max(0, Math.min(100, (cur / dur) * 100));
-    radioBarFill.style.width = pct + "%";
-    radioBarKnob.style.left = pct + "%";
-    radioBar.setAttribute("aria-valuenow", String(Math.round(pct)));
-  }
-}
-
-function ensureLoadedFirst(){
-  if (trackIndex === -1 && TRACKS.length) loadTrack(0, false);
-}
-
-function seekToClientX(clientX){
-  const rect = radioBar.getBoundingClientRect();
-  const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
-  const pct = x / rect.width;
-  const dur = radioAudio.duration;
-  if (Number.isFinite(dur) && dur > 0) {
-    radioAudio.currentTime = dur * pct;
-    updateProgress();
-  }
-}
-
-// Eventos audio
-radioAudio.addEventListener("loadedmetadata", () => {
-  const t = TRACKS[trackIndex];
-  if (t) setNowPlayingUI(t.title, `Duración: ${fmtTime(radioAudio.duration)}`);
-  updateProgress();
-});
-radioAudio.addEventListener("timeupdate", updateProgress);
-radioAudio.addEventListener("ended", () => {
-  if (!TRACKS.length) return;
-  const next = shuffleEnabled ? pickRandomNext(trackIndex) : (trackIndex + 1);
-  loadTrack(next, true);
+// Build categories
+AMBIENTES.forEach((cat, idx) => {
+  const el = document.createElement('div');
+  el.className = 'cat-card';
+  el.style.animationDelay = `${idx * .06}s`;
+  el.innerHTML = `<span class="cat-card-name">${cat.name}</span><span class="cat-card-desc">${cat.desc}</span>`;
+  el.addEventListener('click', () => openCat(idx, el));
+  catGrid.appendChild(el);
 });
 
-// Controles
-radioPlay.addEventListener("click", () => {
-  if (!TRACKS.length) return;
-  if (trackIndex === -1) loadTrack(0, true);
-  else radioAudio.play().catch(()=>{});
+function openCat(idx, el) {
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+
+  currentCat = AMBIENTES[idx];
+  sceneTitle.textContent = currentCat.name;
+  sceneSearch.value = '';
+  renderScenes(currentCat.scenes);
+
+  scenePanel.hidden  = false;
+  playerPanel.hidden = false;
+  setTimeout(() => scenePanel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+}
+
+function renderScenes(list) {
+  sceneGrid.innerHTML = '';
+  sceneEmpty.hidden = !!list.length;
+  list.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'scene-card';
+    el.innerHTML = `<span class="scene-card-name">${s.name}</span>`;
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      selectScene(s);
+    });
+    sceneGrid.appendChild(el);
+  });
+}
+
+function selectScene(s) {
+  selectedScene = s;
+  ytNowTitle.textContent = s.name;
+  ytNowMeta.textContent  = 'Listo para reproducir';
+  ytDot.classList.remove('active');
+  stopYT();
+}
+
+sceneSearch.addEventListener('input', () => {
+  if (!currentCat) return;
+  const q = sceneSearch.value.trim().toLowerCase();
+  renderScenes(currentCat.scenes.filter(s => s.name.toLowerCase().includes(q)));
 });
-radioPause.addEventListener("click", () => radioAudio.pause());
 
-radioNext.addEventListener("click", () => {
-  if (!TRACKS.length) return;
-  const next = shuffleEnabled
-    ? pickRandomNext(trackIndex === -1 ? 0 : trackIndex)
-    : ((trackIndex === -1) ? 0 : trackIndex + 1);
-  loadTrack(next, true);
-});
-
-radioPrev.addEventListener("click", () => {
-  if (!TRACKS.length) return;
-
-  if (historyStack.length) {
-    const prevIdx = historyStack.pop();
-    loadTrack(prevIdx, true, false);
+function startYT() {
+  if (!selectedScene) {
+    ytNowTitle.textContent = 'Selecciona una escena primero';
     return;
   }
+  ytFrame.src = `https://www.youtube.com/embed/${selectedScene.videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+  ytFrameWrap.hidden = false;
+  ytDot.classList.add('active');
+  ytNowMeta.textContent = 'Reproduciendo';
+}
 
-  const prev = (trackIndex === -1) ? 0 : (trackIndex - 1);
-  loadTrack(prev, true);
+function pauseYT() {
+  ytFrame.contentWindow?.postMessage(JSON.stringify({ event:'command', func:'pauseVideo', args:[] }), '*');
+  ytDot.classList.remove('active');
+  ytNowMeta.textContent = 'Pausado';
+}
+
+function stopYT() {
+  ytFrameWrap.hidden = true;
+  ytFrame.src = '';
+}
+
+ytStart.addEventListener('click', startYT);
+ytPause.addEventListener('click', pauseYT);
+ytReset.addEventListener('click', () => {
+  stopYT();
+  selectedScene = null;
+  ytNowTitle.textContent = '—';
+  ytNowMeta.textContent  = 'Selecciona una escena';
+  ytDot.classList.remove('active');
+  scenePanel.hidden  = true;
+  playerPanel.hidden = true;
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Barra: click + teclado
-radioBar.addEventListener("click", (e) => {
-  ensureLoadedFirst();
-  seekToClientX(e.clientX);
-});
-radioBar.addEventListener("keydown", (e) => {
-  ensureLoadedFirst();
-  if (e.key === "ArrowLeft") {
-    radioAudio.currentTime = Math.max(0, radioAudio.currentTime - 5);
+// ── RADIO ──
+const radioAudio   = document.getElementById('radioAudio');
+const radioNowBox  = document.getElementById('radioNowBox');
+const radioNowTitle= document.getElementById('radioNowTitle');
+const radioNowMeta = document.getElementById('radioNowMeta');
+const radioPrev    = document.getElementById('radioPrev');
+const radioPlay    = document.getElementById('radioPlay');
+const radioPause   = document.getElementById('radioPause');
+const radioNext    = document.getElementById('radioNext');
+const radioVolSlider=document.getElementById('radioVolSlider');
+const radioVolFill = document.getElementById('radioVolFill');
+const radioVolValue= document.getElementById('radioVolValue');
+const radioShuffle = document.getElementById('radioShuffle');
+const radioBar     = document.getElementById('radioBar');
+const radioBarFill = document.getElementById('radioBarFill');
+const radioBarKnob = document.getElementById('radioBarKnob');
+const radioTimeNow = document.getElementById('radioTimeNow');
+const radioTimeTot = document.getElementById('radioTimeTotal');
+const tracklistToggle = document.getElementById('tracklistToggle');
+const tracklistEl  = document.getElementById('tracklist');
+const tracklistArrow = document.getElementById('tracklistArrow');
+
+let trackIdx      = -1;
+let history       = [];
+let shuffleOn     = true;
+let tlOpen        = false;
+let switchTimer   = null;
+
+// ── VISUALIZADOR ──
+const vizC   = document.getElementById('vizCanvas');
+const vizCtx = vizC?.getContext('2d');
+let audioCtx, analyser, source, vizData, vizConnected = false;
+let idleAnim;
+
+function connectViz() {
+  if (!vizC || vizConnected || !window.AudioContext) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 32;
+    analyser.smoothingTimeConstant = .8;
+    source = audioCtx.createMediaElementSource(radioAudio);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    vizData = new Uint8Array(analyser.frequencyBinCount);
+    vizConnected = true;
+    cancelAnimationFrame(idleAnim);
+    drawViz();
+  } catch(e) {}
+}
+
+function drawViz() {
+  if (!vizCtx || !analyser) return;
+  requestAnimationFrame(drawViz);
+  analyser.getByteFrequencyData(vizData);
+  vizCtx.clearRect(0, 0, 56, 56);
+  const count = vizData.length, bw = 4, gap = 2;
+  const total = count * (bw + gap) - gap;
+  const ox = (56 - total) / 2;
+  for (let i = 0; i < count; i++) {
+    const v = vizData[i] / 255;
+    const h = Math.max(2, v * 48);
+    const x = ox + i * (bw + gap);
+    vizCtx.fillStyle = `rgba(201,168,76,${.3 + v * .7})`;
+    vizCtx.fillRect(x, 28 - h/2, bw, h);
+  }
+}
+
+function drawIdle() {
+  if (!vizCtx) return;
+  const t = Date.now() * .002;
+  vizCtx.clearRect(0, 0, 56, 56);
+  const count = 8, bw = 4, gap = 2;
+  const total = count * (bw + gap) - gap;
+  const ox = (56 - total) / 2;
+  for (let i = 0; i < count; i++) {
+    const h = 3 + Math.sin(t + i * .5) * 2;
+    const x = ox + i * (bw + gap);
+    vizCtx.fillStyle = 'rgba(201,168,76,.15)';
+    vizCtx.fillRect(x, 28 - h/2, bw, h);
+  }
+  idleAnim = requestAnimationFrame(drawIdle);
+}
+drawIdle();
+
+// ── UTILS ──
+function fmt(s) {
+  if (!isFinite(s) || s < 0) return '--:--';
+  const m = Math.floor(s/60), sec = Math.floor(s%60);
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+function animSwitch() {
+  radioNowBox.classList.add('switching');
+  clearTimeout(switchTimer);
+  switchTimer = setTimeout(() => radioNowBox.classList.remove('switching'), 230);
+}
+
+function setNow(title, meta) {
+  animSwitch();
+  setTimeout(() => {
+    radioNowTitle.textContent = title;
+    radioNowMeta.textContent  = meta;
+  }, 130);
+}
+
+function setVol(v) {
+  const c = Math.max(0, Math.min(1, v));
+  radioAudio.volume = c;
+  const p = Math.round(c * 100);
+  radioVolValue.textContent = p;
+  radioVolSlider.value = p;
+  radioVolFill.style.width = p + '%';
+}
+
+function randNext(cur) {
+  if (TRACKS.length <= 1) return 0;
+  let n = cur;
+  while (n === cur) n = Math.floor(Math.random() * TRACKS.length);
+  return n;
+}
+
+function loadTrack(i, play = false, push = true) {
+  if (!TRACKS.length) return;
+  const ni = ((i % TRACKS.length) + TRACKS.length) % TRACKS.length;
+  if (push && trackIdx !== -1 && ni !== trackIdx) {
+    history.push(trackIdx);
+    if (history.length > 50) history.shift();
+  }
+  trackIdx = ni;
+  const t  = TRACKS[ni];
+  radioAudio.src = t.src;
+  radioAudio.currentTime = 0;
+  radioBarFill.style.width = '0%';
+  radioBarKnob.style.left  = '0%';
+  radioTimeNow.textContent = '00:00';
+  radioTimeTot.textContent = '--:--';
+  setNow(t.title, 'Cargando…');
+  highlightTrack();
+  if (play) {
+    connectViz();
+    if (audioCtx?.state === 'suspended') audioCtx.resume();
+    cancelAnimationFrame(idleAnim);
+    radioAudio.play().catch(() => {});
+  }
+}
+
+function updateProgress() {
+  const d = radioAudio.duration, c = radioAudio.currentTime;
+  radioTimeNow.textContent = fmt(c);
+  radioTimeTot.textContent = fmt(d);
+  if (isFinite(d) && d > 0) {
+    const p = Math.max(0, Math.min(100, c/d*100));
+    radioBarFill.style.width = p + '%';
+    radioBarKnob.style.left  = p + '%';
+    radioBar.setAttribute('aria-valuenow', String(Math.round(p)));
+  }
+}
+
+function seek(clientX) {
+  const r = radioBar.getBoundingClientRect();
+  const p = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+  if (isFinite(radioAudio.duration)) {
+    radioAudio.currentTime = radioAudio.duration * p;
     updateProgress();
   }
-  if (e.key === "ArrowRight") {
-    radioAudio.currentTime = Math.min(radioAudio.duration || 0, radioAudio.currentTime + 5);
-    updateProgress();
-  }
+}
+
+// ── TRACKLIST ──
+function buildTracklist() {
+  tracklistEl.innerHTML = '';
+  TRACKS.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'track-row' + (i === trackIdx ? ' active' : '');
+    el.innerHTML = `<span class="track-i">${i+1}</span><span class="track-name">${t.title}</span>${i===trackIdx?'<span class="track-now">Ahora</span>':''}`;
+    el.addEventListener('click', () => loadTrack(i, true));
+    tracklistEl.appendChild(el);
+  });
+}
+
+function highlightTrack() {
+  if (!tlOpen) { buildTracklist(); return; }
+  document.querySelectorAll('.track-row').forEach((el, i) => {
+    const on = i === trackIdx;
+    el.classList.toggle('active', on);
+    const badge = el.querySelector('.track-now');
+    if (on && !badge) el.insertAdjacentHTML('beforeend', '<span class="track-now">Ahora</span>');
+    if (!on && badge) badge.remove();
+  });
+}
+
+tracklistToggle.addEventListener('click', () => {
+  tlOpen = !tlOpen;
+  tracklistEl.hidden = !tlOpen;
+  tracklistArrow.classList.toggle('open', tlOpen);
+  if (tlOpen) buildTracklist();
 });
 
-// Shuffle toggle
-function syncShuffleButton(){
-  radioShuffle.classList.toggle("active", shuffleEnabled);
-  radioShuffle.textContent = shuffleEnabled ? "🔀 Aleatorio: ON" : "➡️ Aleatorio: OFF";
-  radioShuffle.setAttribute("aria-pressed", String(shuffleEnabled));
-}
-radioShuffle.addEventListener("click", () => {
-  shuffleEnabled = !shuffleEnabled;
-  syncShuffleButton();
+// ── EVENTOS ──
+radioAudio.addEventListener('loadedmetadata', () => {
+  const t = TRACKS[trackIdx];
+  if (t) setNow(t.title, `${fmt(radioAudio.duration)}`);
+  updateProgress();
+});
+radioAudio.addEventListener('timeupdate', updateProgress);
+radioAudio.addEventListener('ended', () => {
+  loadTrack(shuffleOn ? randNext(trackIdx) : trackIdx + 1, true);
+});
+radioAudio.addEventListener('play',  () => { cancelAnimationFrame(idleAnim); });
+radioAudio.addEventListener('pause', () => drawIdle());
+
+radioPlay.addEventListener('click', () => {
+  if (!TRACKS.length) return;
+  connectViz();
+  if (audioCtx?.state === 'suspended') audioCtx.resume();
+  if (trackIdx === -1) loadTrack(0, true);
+  else { cancelAnimationFrame(idleAnim); radioAudio.play().catch(() => {}); }
+});
+radioPause.addEventListener('click', () => radioAudio.pause());
+radioNext.addEventListener('click', () => {
+  if (!TRACKS.length) return;
+  loadTrack(shuffleOn ? randNext(trackIdx < 0 ? 0 : trackIdx) : trackIdx + 1, true);
+});
+radioPrev.addEventListener('click', () => {
+  if (!TRACKS.length) return;
+  if (history.length) { loadTrack(history.pop(), true, false); return; }
+  loadTrack(trackIdx <= 0 ? TRACKS.length - 1 : trackIdx - 1, true);
 });
 
-// Volumen buttons
-setVol(0.8);
-const STEP = 0.1;
-radioVolDown.addEventListener("click", () => setVol(radioAudio.volume - STEP));
-radioVolUp.addEventListener("click", () => setVol(radioAudio.volume + STEP));
+// Progress bar
+let dragging = false;
+radioBar.addEventListener('click', e => seek(e.clientX));
+radioBar.addEventListener('mousedown', e => { dragging = true; seek(e.clientX); });
+window.addEventListener('mousemove',   e => { if (dragging) seek(e.clientX); });
+window.addEventListener('mouseup',     () => dragging = false);
+radioBar.addEventListener('touchstart', e => seek(e.touches[0].clientX), { passive: true });
+window.addEventListener('touchmove',   e => { if (dragging) seek(e.touches[0].clientX); }, { passive: true });
+radioBar.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  radioAudio.currentTime = Math.max(0, radioAudio.currentTime - 5);
+  if (e.key === 'ArrowRight') radioAudio.currentTime = Math.min(radioAudio.duration||0, radioAudio.currentTime + 5);
+  updateProgress();
+});
 
-// Estado inicial
-if (TRACKS.length) {
-  radioNowTitle.textContent = "La radio está lista";
-  radioNowMeta.textContent = "Pulsa Play";
-} else {
-  radioNowTitle.textContent = "Sin canciones";
-  radioNowMeta.textContent = "Añade temas en TRACKS (JS)";
-}
-syncShuffleButton();
+setVol(.8);
+radioVolSlider.addEventListener('input', () => setVol(radioVolSlider.value / 100));
+
+radioShuffle.addEventListener('click', () => {
+  shuffleOn = !shuffleOn;
+  radioShuffle.setAttribute('aria-pressed', String(shuffleOn));
+});
+
+// Init
+setNow('La radio está lista', 'Pulsa reproducir');
+buildTracklist();
