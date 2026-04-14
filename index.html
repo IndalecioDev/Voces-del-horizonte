@@ -3,24 +3,51 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#020203"/>
   <title>Voces del Horizonte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- font-display=swap: el texto es visible inmediatamente con fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;600;700&family=Cinzel+Decorative:wght@300;400;700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,200;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
+  <!-- Cursor personalizado -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+  </div>
+
+  <!-- Flash de transición de tema -->
+  <div class="theme-flash" id="themeFlash"></div>
+
+  <!-- Efectos de fondo -->
   <canvas id="grain"></canvas>
+  <canvas id="stars"></canvas>
+  <canvas id="particles"></canvas>
+
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
 
   <main class="app">
 
     <header class="site-header">
       <div class="header-rule"></div>
       <div class="header-body">
-        <span class="header-label">Mesa sonora</span>
-        <h1><em>Voces</em> del Horizonte</h1>
-        <p class="header-sub">Terratea &nbsp;&middot;&nbsp; Ambientes de rol</p>
+        <span class="header-label">Mesa sonora · Terratea</span>
+        <h1>
+          <span class="word-voces">Voces</span>
+          <span class="word-horizonte">del Horizonte</span>
+        </h1>
+        <div class="header-ornament">
+          <span class="ornament-line"></span>
+          <div class="ornament-diamond"></div>
+          <span class="ornament-line"></span>
+        </div>
+        <p class="header-sub">Ambientes de rol &nbsp;&middot;&nbsp; Canciones originales</p>
+        <span class="header-theme-badge" id="headerThemeBadge"></span>
       </div>
       <div class="header-rule"></div>
     </header>
@@ -80,10 +107,9 @@
       </div>
 
       <div class="radio-body">
-
         <div class="radio-now">
           <div class="now-visual">
-            <canvas id="vizCanvas" width="56" height="56"></canvas>
+            <canvas id="vizCanvas" width="68" height="68"></canvas>
           </div>
           <div class="now-text nowbox-animate" id="radioNowBox">
             <p class="now-label">En antena</p>
@@ -142,7 +168,6 @@
           </button>
           <div class="tracklist" id="tracklist" hidden></div>
         </div>
-
       </div>
     </section>
 
